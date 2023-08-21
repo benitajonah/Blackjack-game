@@ -13,19 +13,18 @@ const containerEl = document.querySelector('.container')
 
 PrizeEl.textContent = `Prize: ${prize}$ `
 
-// --------- Start button on click ----------- //
+// --------- Start Button ----------- //
 startBtn.addEventListener('click', () => {
   drawCards()
   updateLocalStorage()
 })
 
-// Restart button on click
+// --------- Restart Button ----------- //
 restartBtn.addEventListener('click', () => {
   restartGame()
 })
 
-// --------- Game Start --------------//
-
+// --------- Start Game --------------//
 function drawCards() {
   firstCard = generateRandomNumber()
   secondCard = generateRandomNumber()
@@ -58,7 +57,7 @@ function drawCards() {
   PrizeEl.textContent = `Prize: ${prize}$ `
 }
 
-// ----------------- Game restart
+// --------- Restart Game --------------//
 function restartGame() {
   firstCard = ''
   secondCard = ''
@@ -69,12 +68,12 @@ function restartGame() {
   sumEl.textContent = `Sum: ${secondCard}`
 }
 
-function endGame() {}
-
+// --------- Generate Random Card Numbers ----------- //
 function generateRandomNumber() {
   return Math.floor(Math.random() * 13)
 }
 
+// --------- Save Prize To Local Storage ----------- //
 function updateLocalStorage() {
   localStorage.setItem('prize', JSON.stringify(prize))
 }
