@@ -94,7 +94,7 @@ function generateRandomNumber() {
   return Math.floor(Math.random() * 12) + 1
 }
 
-// --------- Save Prize To Local Sto rage ----------- //
+// --------- Save Prize To Local Storage ----------- //
 function updateLocalStorage() {
   localStorage.setItem('prize', JSON.stringify(prize))
 }
