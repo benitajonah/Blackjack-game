@@ -34,27 +34,48 @@ function drawCards() {
   cardsEl.textContent = `Cards: ${cards[0]}, ${cards[1]}`
   sumEl.textContent = `Sum: ${sum}`
 
+  // --------- Conditional statement for card value --------------//
   if (sum < 21) {
-    containerEl.style.background = ''
-    message = `Oops! Draw new card.`
-    prize -= 2
+    cardLess()
   } else if (sum === 21) {
-    containerEl.style.background = 'hotpink'
-    message = `Woohoo! You've got backjack!`
-    prize += 100
+    cardEqual()
   } else {
-    containerEl.style.background = 'red'
-    prize = 0
-    message = `You're out of the game!`
-    setTimeout(() => {
-      restartGame()
-      startBtn.disabled = false
-    }, 3000)
-    startBtn.disabled = true
+    cardGreater()
   }
 
   messageEl.textContent = message
   PrizeEl.textContent = `Prize: ${prize}$ `
+}
+
+// --------- Card less than 21 --------------//
+function cardLess() {
+  containerEl.style.background = ''
+  message = `Oops! Draw new card.`
+  prize -= 2
+}
+
+// --------- Card equal to 21 --------------//
+function cardEqual() {
+  containerEl.style.background = 'hotpink'
+  message = `Woohoo! You've got backjack!`
+  prize += 100
+  startBtn.disabled = true
+  setTimeout(() => {
+    startBtn.disabled = false
+    drawCards()
+  }, 2000)
+}
+
+// --------- Card Greater than 21 --------------//
+function cardGreater() {
+  containerEl.style.background = 'red'
+  prize = 0
+  message = `You're out of the game!`
+  setTimeout(() => {
+    restartGame()
+    startBtn.disabled = false
+  }, 2000)
+  startBtn.disabled = true
 }
 
 // --------- Restart Game --------------//
@@ -70,10 +91,10 @@ function restartGame() {
 
 // --------- Generate Random Card Numbers ----------- //
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 13)
+  return Math.floor(Math.random() * 12) + 1
 }
 
-// --------- Save Prize To Local Storage ----------- //
+// --------- Save Prize To Local Sto rage ----------- //
 function updateLocalStorage() {
   localStorage.setItem('prize', JSON.stringify(prize))
 }
