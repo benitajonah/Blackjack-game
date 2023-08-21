@@ -13,14 +13,18 @@ const containerEl = document.querySelector('.container')
 
 PrizeEl.textContent = `Prize: ${prize}$ `
 
+// --------- Start button on click ----------- //
 startBtn.addEventListener('click', () => {
   drawCards()
   updateLocalStorage()
 })
 
+// Restart button on click
 restartBtn.addEventListener('click', () => {
   restartGame()
 })
+
+// --------- Game Start --------------//
 
 function drawCards() {
   firstCard = generateRandomNumber()
@@ -54,6 +58,7 @@ function drawCards() {
   PrizeEl.textContent = `Prize: ${prize}$ `
 }
 
+// ----------------- Game restart
 function restartGame() {
   firstCard = ''
   secondCard = ''
