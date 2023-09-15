@@ -20,9 +20,7 @@ startBtn.addEventListener('click', () => {
 })
 
 // --------- Restart Button ----------- //
-restartBtn.addEventListener('click', () => {
-  restartGame()
-})
+restartBtn.addEventListener('click', restartGame)
 
 // --------- Start Game --------------//
 function drawCards() {
